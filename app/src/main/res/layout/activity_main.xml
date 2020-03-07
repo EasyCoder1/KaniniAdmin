@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@android:color/transparent"
+    android:background="@android:color/transparent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="317dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/loginBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="50dp"
+        android:text=" ® Avania Technologies"
+        android:textAlignment="center"
+        android:textColor="#1b30a4"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#800000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="KANINI HARAKA ENTERPRISE LTD"
+        app:titleMarginStart="25dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="128dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="41dp"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="153dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="143dp"
+        android:layout_marginEnd="129dp"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/username"
+        android:layout_width="128dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:hint=" Enter Username"
+        tools:text="@tools:sample/first_names" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="128dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/username"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/textView10"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="276dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/password"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="66dp"
+        android:background="@android:color/holo_red_dark"
+        android:onClick="login"
+        android:text="login"
+        android:textColor="@android:color/white"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="128dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="39dp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="172dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/toolbar1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="122dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="ADMIN"
+        android:textColor="@android:color/background_dark"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
