@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/offtripSalesmen" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnsalesmenOffline"
         android:layout_width="165dp"
         android:layout_height="71dp"
         android:layout_marginTop="16dp"
@@ -32,10 +32,10 @@
         android:text="OFFLINE"
         android:background="@android:color/holo_orange_dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/offlineSalesmen" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/offlineSalesmen"
         android:layout_width="131dp"
         android:layout_height="66dp"
         android:layout_marginTop="52dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/offtripSalesmen"
         android:layout_width="131dp"
         android:layout_height="66dp"
         android:layout_marginTop="52dp"
@@ -62,10 +62,10 @@
         android:textColor="@android:color/background_dark"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnsalesmenOffline" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/onTripSalesmen"
         android:layout_width="131dp"
         android:layout_height="66dp"
         android:layout_marginStart="32dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/onlineSalesmen"
         android:layout_width="131dp"
         android:layout_height="66dp"
         android:layout_marginStart="32dp"
@@ -131,7 +131,7 @@
         android:background="@android:color/holo_orange_dark"
         android:text="ONLINE"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/onlineSalesmen" />
 
     <Button
         android:id="@+id/button4"
@@ -143,7 +143,7 @@
         android:textSize="24sp"
         android:text="ON-TRIP"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/onTripSalesmen" />
 
     <TextView
         android:id="@+id/textView19"

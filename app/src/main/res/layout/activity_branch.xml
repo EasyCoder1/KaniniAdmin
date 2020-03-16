@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".branchActivity">
+    tools:context=".Activities.branchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
@@ -27,7 +27,7 @@
         android:layout_height="94dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:background="@android:color/holo_blue_bright"
+        android:background="#64b5f6"
         android:gravity="center"
         android:text="Select Branch"
         android:textColor="@android:color/background_dark"
@@ -74,7 +74,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#20304d ">
+            android:background="#263238">
 
             <Button
                 android:id="@+id/button5"
@@ -89,10 +89,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/button4"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/offtripSalesmen" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnsalesmenOffline"
                 android:layout_width="165dp"
                 android:layout_height="71dp"
                 android:layout_marginTop="16dp"
@@ -101,10 +101,10 @@
                 android:text="OFFLINE"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/offlineSalesmen" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/offlineSalesmen"
                 android:layout_width="131dp"
                 android:layout_height="66dp"
                 android:layout_marginTop="52dp"
@@ -116,10 +116,10 @@
                 android:textColorHint="@android:color/background_dark"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/noSalesmen" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/offtripSalesmen"
                 android:layout_width="131dp"
                 android:layout_height="66dp"
                 android:layout_marginTop="52dp"
@@ -131,10 +131,10 @@
                 android:textColorHint="@android:color/background_dark"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button3" />
+                app:layout_constraintTop_toBottomOf="@+id/btnsalesmenOffline" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/onTripSalesmen"
                 android:layout_width="131dp"
                 android:layout_height="66dp"
                 android:layout_marginStart="32dp"
@@ -146,10 +146,10 @@
                 android:textColorHint="@android:color/background_dark"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button2" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSalesmanOnline" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/onlineSalesmen"
                 android:layout_width="131dp"
                 android:layout_height="66dp"
                 android:layout_marginStart="32dp"
@@ -164,7 +164,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/noSalesmen"
                 android:layout_width="93dp"
                 android:layout_height="59dp"
                 android:layout_marginStart="28dp"
@@ -191,7 +191,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnSalesmanOnline"
                 android:layout_width="165dp"
                 android:layout_height="71dp"
                 android:layout_marginStart="16dp"
@@ -200,7 +200,7 @@
                 android:text="ONLINE"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/onlineSalesmen" />
 
             <Button
                 android:id="@+id/button4"
@@ -212,12 +212,12 @@
                 android:text="ON-TRIP"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/onTripSalesmen" />
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="402dp"
-                android:layout_height="72dp"
+                android:layout_width="405dp"
+                android:layout_height="68dp"
                 android:layout_marginTop="31dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

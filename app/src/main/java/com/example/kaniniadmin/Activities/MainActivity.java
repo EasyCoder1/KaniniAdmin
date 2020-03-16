@@ -1,10 +1,12 @@
-package com.example.kaniniadmin;
+package com.example.kaniniadmin.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.kaniniadmin.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -12,4 +12,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_my_maps">Map</string>
+    <string name="refreshed_at">Refreshed at</string>
+    <string name="back">Back</string>
+    <string name="name">Name :</string>
+    <string name="branch">Branch</string>
+    <string name="userlocation">userLocation</string>
+
 </resources>
