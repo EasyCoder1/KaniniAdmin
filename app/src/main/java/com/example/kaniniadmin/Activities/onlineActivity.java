@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -34,16 +35,18 @@ public class onlineActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView.Adapter adapter;
+    private String branchSelected;
     private DividerItemDecoration dividerItemDecoration;
     private List <MyData> mldata;
-    private String URL = " ";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online);
-
+        Intent intent=getIntent();
+        branchSelected=intent.getStringExtra("branchSelected");
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         mldata= new ArrayList<>();
@@ -57,25 +60,24 @@ public class onlineActivity extends AppCompatActivity {
     }
 
     private void loadData(){
+        //call on server method online activity. pass the branchSelected string in the url
         final ProgressDialog progressDialog= new ProgressDialog(this);
         progressDialog.setMessage("Loading... please wait");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        String url = "http://avaniatech.co.ke/api/branchOnline/"+branchSelected;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("name");
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject jo = jsonArray.getJSONObject(i);
+                    JSONArray array=new JSONArray(response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject jo = array.getJSONObject(i);
                         MyData myData = new MyData();
                         myData.setName(jo.getString("username"));
                         myData.setPhone(jo.getString("phoneNo"));
                         mldata.add(myData);
-
-
                     }
 
                 } catch (JSONException e) {

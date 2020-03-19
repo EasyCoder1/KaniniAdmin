@@ -24,13 +24,15 @@ import com.android.volley.toolbox.Volley;
 import com.example.kaniniadmin.R;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class branchActivity extends AppCompatActivity {
 
-    Button BtnOnline,BtnOffline,BtnOnTrip,BtnOffTrip;
-    TextView noSalesmen, OnlineSalesmen, OfflineSalesmen,onTripSalesmen,offTripSalesmen;
+    private Button BtnOnline,BtnOffline,BtnOnTrip,BtnOffTrip;
+    private TextView noSalesmen, OnlineSalesmen, OfflineSalesmen,onTripSalesmen,offTripSalesmen;
+    private String select;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class branchActivity extends AppCompatActivity {
         onTripSalesmen=findViewById(R.id.onTripSalesmen);
         offTripSalesmen=findViewById(R.id.offtripSalesmen);
 
+
         Spinner spinner = findViewById(R.id.spinner2);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Branches, R.layout.sxpinner_item);
         spinner.setAdapter(adapter);
@@ -49,7 +52,7 @@ public class branchActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                final String select = parent.getItemAtPosition(position).toString();
+                select = parent.getItemAtPosition(position).toString();
                 Log.d("Spinner on selection", "selected" + select);
                     final Handler handler = new Handler();
                     Runnable runnableCode = new Runnable() {
@@ -85,6 +88,7 @@ public class branchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), onlineActivity.class);
+                intent.putExtra("branchSelected",select);
                 startActivity(intent);
             }
         });
@@ -97,22 +101,29 @@ public class branchActivity extends AppCompatActivity {
 
     }
 
-    public void loadData(String select) {
+    public void loadData(String SX) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.show();
         progressDialog.setCancelable(false);
-        String url = "https://avaniatech.co.ke/api/BranchSummary/"+select;
+        String url = "https://avaniatech.co.ke/api/countbranch/"+select;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
 
                 try {
-                    noSalesmen.setText(response.getString("branchSalesmen"));
-                    OnlineSalesmen.setText(response.getString("onlinecount"));
-                    OfflineSalesmen.setText(response.getString("offlinecount"));
-                    onTripSalesmen.setText(response.getString("onTripSalesmen"));
-                    offTripSalesmen.setText(response.getString("offTripSalesmen"));
+                    JSONArray array=new JSONArray(response);
+                    for (int i=0;i<array.length();i++)
+                    {
+                        JSONObject jsonObject=array.getJSONObject(i);
+                        noSalesmen.setText(jsonObject.getString("branchSalesmen"));
+                        noSalesmen.setText(jsonObject.getString("branchSalesmen"));
+                        OnlineSalesmen.setText(jsonObject.getString("onlinecount"));
+                        OfflineSalesmen.setText(jsonObject.getString("offlinecount"));
+                    }
+
+//                    onTripSalesmen.setText(response.getString("onTripSalesmen"));
+//                    offTripSalesmen.setText(response.getString("offTripSalesmen"));
 
                 } catch (JSONException e) {
 
@@ -136,7 +147,7 @@ public class branchActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.show();
         progressDialog.setCancelable(false);
-        String url = "https://avaniatech.co.ke/api/BranchSummary/Thika";
+        String url = "https://avaniatech.co.ke/api/countbranch/Thika";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

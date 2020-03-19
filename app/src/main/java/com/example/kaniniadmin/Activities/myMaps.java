@@ -2,6 +2,7 @@ package com.example.kaniniadmin.Activities;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import com.android.volley.Request;
@@ -26,18 +27,21 @@ public class myMaps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private double lat,lng;
+    private String phoneNo, username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_maps);
         Bundle extras = getIntent().getExtras();
-        String username=extras.getString("username");
-        String phoneNo=extras.getString("phoneNo");
+        assert extras != null;
+        username=extras.getString("username");
+        phoneNo=extras.getString("phoneNo");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
         Update();
     }
@@ -58,24 +62,31 @@ public class myMaps extends FragmentActivity implements OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(lat, lng);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(username));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17f));
+        mMap.animateCamera(CameraUpdateFactory.zoomIn());
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16), 2000, null);
     }
 
-    public void getdata(){
+    public void getdata(String ts){
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url=" ";
-            JSONObject object = new JSONObject();
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        //requesting server showOnlineSingle
+        String url="http://avaniatech.co.ke/api/ ";
+        final ProgressDialog progressDialog= new ProgressDialog(this);
+        progressDialog.setMessage("Loading... please wait");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    //http method to return a json array named location
                     try{
-                        JSONArray array = response.getJSONArray("location");
+                        JSONArray array=new JSONArray(response);
                         for(int i=0;i<array.length();i++) {
                             JSONObject smanloc = array.getJSONObject(i);
-                            String z = smanloc.getString("lat");
-                            String x = smanloc.getString("lng");
+                            String z = smanloc.getString("latitude");
+                            String x = smanloc.getString("longitude");
+                            String time=smanloc.getString("created_at");
 
                             lat = Double.parseDouble(z);
                             lng = Double.parseDouble(x);
@@ -102,7 +113,7 @@ public class myMaps extends FragmentActivity implements OnMapReadyCallback {
           Runnable runnableCode = new Runnable() {
             @Override
             public void run() {
-                getdata();
+                getdata(phoneNo);
                 handler.postDelayed(this, 4000);
             }
         };
